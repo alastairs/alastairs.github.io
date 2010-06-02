@@ -1,3 +1,21 @@
+<?php 
+    include('get_content.php');
+    global $codebork, $reelcritic;
+    
+    function printFeed($feed, $includeReadMore = false) {
+        foreach ($feed as $item) { ?>
+        <h3><a href="#"><?php print($item['title']);?></a></h3>
+        <div>
+          <p><?php print(date('j F Y H:m', $item['date']));?></p>
+          <p><?php print($item['desc']);?></p>
+          <?php if ($includeReadMore) { ?>
+          <p><a href="<?php print($item['link']);?>" alt="<?php print($item['title']);?>" title="<?php print($item['title']);?>">Read more&hellip;</a></p>
+          <?php } ?>
+        </div>
+      <?php }
+    }
+?>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-GB">
   <head>
@@ -7,40 +25,22 @@
     <link type="text/css" href="css/cupertino/jquery-ui-1.8.1.custom.css" rel="stylesheet" />
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js" type="text/javascript"></script>
-    <script src="js/jfeed.js" type="text/javascript"></script>
     <script language="Javascript" type="text/javascript">
       //<![CDATA[
       var codeborkSession = null;
       var reelcriticSession = null;
 
       $(function() {
-          getCodeBorkContent();
           $("#codebork").accordion({
-              collapsible: true
+              collapsible: true,
+              autoHeight: false
           });
 
-          //getReelCriticContent();
           $("#reelcritic").accordion({
-              collapsible: true
+              collapsible: true,
+              autoHeight: false
           });
-      });
-
-      function getCodeBorkContent() {
-	  $.getFeed({
-              url: "http://www.codebork.com/rss.xml",
-              success: function(feed) {
-                  alert(feed.title);
-	      }
-          });
-      }
-
-      function addDrupalContentToPage(feed) {
-          alert("success:" + feed.title);
-      }
-
-      function ajaxError(request, status, errorThrown) {
-          alert(status);
-      }
+      });      
       //]]>
     </script>
   </head>
@@ -50,18 +50,12 @@
 
     <h2>CodeBork.com</h2>
     <div id="codebork">
-      <h3><a href="#">CodeBork Headline</a></h3>
-      <div><p>Codebork body</p></div>
-      <h3><a href="#">CodeBork Headline</a></h3>
-      <div><p>Codebork body</p></div>
+    <?php printFeed($codebork, true); ?>
     </div>
 
     <h2>ReelCritic.co.uk</h2>
     <div id="reelcritic">
-      <h3><a href="#">ReelCritic Headline</a></h3>
-      <div><p>ReelCritic body</p></div>
-      <h3><a href="#">ReelCritic Headline</a></h3>
-      <div><p>ReelCritic body</p></div>
+      <?php printFeed($reelcritic); ?>
     </div>
 
     <h2>GitHub</h2>
