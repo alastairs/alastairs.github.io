@@ -34,6 +34,10 @@ p.postInfo {
     font-size: 70%;
 }
 
+div.teaser p {
+    font-size: 80%;
+} 
+
 p.summary {
     font-family: Times;
     font-style: italic;

@@ -10,7 +10,7 @@
         <h3><a href="#"><?php print($item['title']);?></a></h3>
         <div>
           <p class="postInfo">Posted on <?php print(date('j F Y \a\t H:m', $item['date']));?></p>
-          <?php print($item['desc']);?>
+          <div class="teaser"><?php print($item['desc']);?></div>
           <?php if ($includeReadMore) { ?>
           <p class="postInfo"><a href="<?php print($item['link']);?>" alt="<?php print($item['title']);?>" title="<?php print($item['title']);?>">Read more&hellip;</a></p>
           <?php } ?>
@@ -54,7 +54,7 @@
     <h1 id="title">Hi! Hello! Good Day!</h1>
     <p id="welcome">This is my personal homepage.  Welcome!</p>
 
-    <div id="reelcritic" class="column tripleColumn">
+    <div id="codebork" class="column tripleColumn">
       <h2>CodeBork.com</h2>
       <p>CodeBork is my main blog where I write on technical subjects, mostly programming.</p>
       <div id="codeborkBlog">
@@ -87,8 +87,8 @@
       <p class="summary">I'm an amateur photographer.  I like working with natural light, particularly outdooor 
       and landscape scenes.  I shoot with a Nikon D90 digital SLR camera and either a fast 50mm prime lens or 
       a slower 18-105mm zoom lens.</p>
-      <p class="summary">My photographs are hosted on <a href="http://picasaweb.google.com">Google's Picasa 
-      service</a>.</p>
+      <p class="summary">My photographs are hosted on 
+      <a href="http://picasaweb.google.com/alastairsmith1">Google's Picasa service</a>.</p>
       <embed type="application/x-shockwave-flash" src="http://picasaweb.google.com/s/c/bin/slideshow.swf" width="600" height="400" flashvars="host=picasaweb.google.com&hl=en_GB&feat=flashalbum&RGB=0x000000&feed=http%3A%2F%2Fpicasaweb.google.com%2Fdata%2Ffeed%2Fapi%2Fuser%2Falastairsmith1%3Falt%3Drss%26kind%3Dphoto%26access%3Dpublic%26psc%3DF%26q%26uname%3Dalastairsmith1" pluginspage="http://www.macromedia.com/go/getflashplayer"></embed>
     </div>
   </body>
