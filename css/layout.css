@@ -1,0 +1,24 @@
+#github-badge {
+    width: 200px;
+}
+
+#codebork, #reelcritic {
+    margin-bottom: 1em;
+}
+
+.column {
+    margin: 5px;
+    padding: 5px;
+    width: 300px;
+    float: left;
+}
+
+.doubleColumn {
+    width: 620px;
+    float: left;
+}
+
+.tripleColumn {
+    width: 940px;
+    clear: both;
+}
