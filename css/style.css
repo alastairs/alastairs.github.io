@@ -47,3 +47,20 @@ p.summary {
 a {
     color: #2779aa;
 }
+
+.shadow {
+    float: left;
+    background: url('../img/shadowAlpha.png') no-repeat bottom right !important;
+    background: url('../img/shadow.gif') no-repeat bottom right;
+    margin: 10px 10px 0 !important;
+    margin: 10px 10px 0 5px;
+}
+
+.shadow img {
+    display: block;
+    position: relative;
+    background-color: white;
+    border: 1px solid #a9a9a9;
+    margin: -6px 6px 6px -6px;
+    padding: 4px;
+}

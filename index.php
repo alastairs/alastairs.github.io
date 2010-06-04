@@ -31,8 +31,29 @@
   <body>
     <div id="wrapper">
       <div id="mainContent">
-        <h1 id="title">Hi! Hello! Good Day!</h1>
-        <p id="welcome">This is my personal homepage.  Welcome!</p>
+        <div id="title" class="column tripleColumn">
+          <h1 id="title">Hi! Hello! Good Day!</h1>
+        </div>  
+        <div id="intro" class="column tripleColumn">
+          <div class="shadow">
+            <img src="img/alastairsmith.jpg" alt="Alastair Smith"/>
+          </div>
+          <p>I'm Alastair, a software developer based in Cambridge, UK.  I work primarily in the Microsoft space
+          with C# and the .NET Framework, but fiddle around with many other technologies and languages such as 
+          WiX, PowerShell, and PHP.</p>
+          
+          <p>I'm a professional member of <a href="http://www.bcs.org/" title="The Chartered Institute for IT">
+          BCS, The Chartered Institute for IT</a> and am Treasurer for the East Anglia branch.  BCS aims to 
+          increase the level of professionalism in the IT industry and promote it to the level of accountancy,
+          law, engineering and medicine in the public eye.</p>
+           
+          <p>I'm also a keen amateur bassoonist, playing regularly with the 
+          <a href="http://www.cambridgegraduateorchestra.com/" title="Cambridge Graduate Orchestra">Cambridge 
+          Graduate Orchestra</a>.  In 2009, I achieved the DipABRSM in Performance on the instrument.  I 'dep'
+          for various ensembles in the Cambridge area including the Academy of Great St. Mary's and the
+          Uttlesforde orchestra. <a href="http://www.codebork.com/contact" title="Contact | CodeBork">Contact
+          me</a> if you'd like me to play.</p>
+        </div>
 
         <div id="codebork" class="column tripleColumn">
           <h2>CodeBork.com</h2>
@@ -44,7 +65,8 @@
 
         <div id="reelcritic" class="column tripleColumn">
           <h2>ReelCritic.co.uk</h2>
-          <p>ReelCritic is a newer blog that I set up to discuss film and television news and events.</p>
+          <p>ReelCritic is a newer blog that I set up to discuss film and television news and events.  I mostly
+          use it to post reviews of films that I have seen.</p>
           <div id="reelcriticBlog">
             <?php printFeed($reelcritic); ?>
           </div>
