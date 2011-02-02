@@ -55,14 +55,24 @@
           me</a> if you'd like me to play.</p>
         </div>
 
-        <div id="codebork" class="column tripleColumn">
-          <h2>CodeBork.com</h2>
-          <p>CodeBork is my main blog where I write on technical subjects, mostly programming.</p>
-          <div id="codeborkBlog">
-            <?php printFeed($codebork, true); ?>
-          </div>
-        </div>
-
+		<div id="codebork" class="column doubleColumn">
+		  <h2>CodeBork.com</h2>
+		  <p>CodeBork is my main blog where I write on technical subjects, mostly programming.</p>
+		  <div id="codeborkBlog">
+			<?php printFeed($codebork, true); ?>
+	        <h3><a href="#">Article Title</a></h3>
+			<div><div class="teaser">Article body</div></div>
+	        <h3><a href="#">Article Title</a></h3>
+			<div><div class="teaser">Article body</div></div>
+	        <h3><a href="#">Article Title</a></h3>
+			<div><div class="teaser">Article body</div></div>
+		  </div>
+		</div>
+		<div id="keyProjects" class="column">
+		  <h2>Visual Studio Build Progress Bar</h2>
+		  <div>A simple add-in to Visual Studio 2008 and Visual Studio 2010 to display the current build progress 
+		  in the Windows 7 task bar.</div>
+		</div>
         <div id="reelcritic" class="column tripleColumn">
           <h2>ReelCritic.co.uk</h2>
           <p>ReelCritic is a newer blog that I set up to discuss film and television news and events.  I mostly
