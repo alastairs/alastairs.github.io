@@ -37,7 +37,7 @@
           with C# and the .NET Framework, but fiddle around with many other technologies and languages such as 
           WiX, PowerShell, and PHP.</p>
           
-		  <p>I'm the founder of the <a href="http://www.camswcraft.org/" title="Cambridge Software Craftsmanship Community website">
+		  <p>I'm the founder of the <a href="http://www.camswcraft.org.uk/" title="Cambridge Software Craftsmanship Community website">
 		  Cambridge Software Craftsmanship Community (CSCC)</a>, a group set up to promote and encourage professionalism
 		  the software industry.  Currently we run two meet-ups per month: a round-table discussion on the first Tuesday, 
 		  and a hands-on session on the third Tuesday.</p>
