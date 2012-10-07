@@ -15,12 +15,7 @@
       var reelcriticSession = null;
 
       $(function() {
-          $("#codeborkBlog").accordion({
-              collapsible: true,
-              autoHeight: false
-          });
-
-          $("#reelcriticBlog").accordion({
+          $(".blog").accordion({
               collapsible: true,
               autoHeight: false
           });
@@ -31,41 +26,36 @@
   <body>
     <div id="wrapper">
       <div id="mainContent">
-        <div id="title" class="column tripleColumn">
+        <div class="column tripleColumn">
           <h1 id="title">Hi! Hello! Good Day!</h1>
         </div>  
         <div id="intro" class="column tripleColumn">
           <div class="shadow">
-            <img src="img/alastairsmith.jpg" alt="Alastair Smith"/>
+            <img src="https://secure.gravatar.com/avatar/639d9144c935d74458cd033d4c6f0f28?s=300" alt="Alastair Smith"/>
           </div>
           <p>I'm Alastair, a software developer based in Cambridge, UK.  I work primarily in the Microsoft space
           with C# and the .NET Framework, but fiddle around with many other technologies and languages such as 
           WiX, PowerShell, and PHP.</p>
           
-          <p>I'm a professional member of <a href="http://www.bcs.org/" title="The Chartered Institute for IT">
-          BCS, The Chartered Institute for IT</a> and am Treasurer for the East Anglia branch.  BCS aims to 
-          increase the level of professionalism in the IT industry and promote it to the level of accountancy,
-          law, engineering and medicine in the public eye.</p>
+		  <p>I'm the founder of the <a href="http://www.camswcraft.org/" title="Cambridge Software Craftsmanship Community website">
+		  Cambridge Software Craftsmanship Community (CSCC)</a>, a group set up to promote and encourage professionalism
+		  the software industry.  Currently we run two meet-ups per month: a round-table discussion on the first Tuesday, 
+		  and a hands-on session on the third Tuesday.</p>
            
           <p>I'm also a keen amateur bassoonist, playing regularly with the 
           <a href="http://www.cambridgegraduateorchestra.com/" title="Cambridge Graduate Orchestra">Cambridge 
-          Graduate Orchestra</a>.  In 2009, I achieved the DipABRSM in Performance on the instrument.  I 'dep'
-          for various ensembles in the Cambridge area including the Academy of Great St. Mary's and the
-          Uttlesforde orchestra. <a href="http://www.codebork.com/contact" title="Contact | CodeBork">Contact
-          me</a> if you'd like me to play.</p>
+		  Graduate Orchestra</a> and the <a href="http://www.huntsphil.org.uk/" title="Huntingdonshire Philharmonic">
+		  Huntingdonshire Philharmonic</a>. In 2009, I achieved the DipABRSM in Performance on the instrument.  I 'dep' 
+		  for various ensembles in the Cambridge area including Cambridge Symphonic Winds, the City of Cambridge Symphony 
+		  Orchestra, and the Uttlesforde orchestra. <a href="http://www.codebork.com/contact" title="Contact | CodeBork">
+		  Contact me</a> if you would like me to play.</p>
         </div>
 
 		<div id="codebork" class="column doubleColumn">
 		  <h2>CodeBork.com</h2>
 		  <p>CodeBork is my main blog where I write on technical subjects, mostly programming.</p>
-		  <div id="codeborkBlog">
+		  <div id="codeborkBlog" class="blog">
 			<?php printFeed($codebork, true); ?>
-	        <h3><a href="#">Article Title</a></h3>
-			<div><div class="teaser">Article body</div></div>
-	        <h3><a href="#">Article Title</a></h3>
-			<div><div class="teaser">Article body</div></div>
-	        <h3><a href="#">Article Title</a></h3>
-			<div><div class="teaser">Article body</div></div>
 		  </div>
 		</div>
 		<div id="keyProjects" class="column">
@@ -77,7 +67,7 @@
           <h2>ReelCritic.co.uk</h2>
           <p>ReelCritic is a newer blog that I set up to discuss film and television news and events.  I mostly
           use it to post reviews of films that I have seen.</p>
-          <div id="reelcriticBlog">
+          <div id="reelcriticBlog" class="blog">
             <?php printFeed($reelcritic); ?>
           </div>
         </div>
