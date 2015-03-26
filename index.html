@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Alastair Smith's homepage</title>
+    <link type="text/css" href="css/reset.css" rel="stylesheet" />
+    <link type="text/css" href="css/layout.css" rel="stylesheet" />
+    <link type="text/css" href="css/style.css" rel="stylesheet" />
+    <link type="text/css" href="css/cupertino/jquery-ui-1.8.1.custom.css" rel="stylesheet" />
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js" type="text/javascript"></script>
+    <script type="text/javascript">
+      $(function() {
+          $(".blog").accordion({
+              collapsible: true,
+              autoHeight: false
+          });
+      });
+      //]]>
+    </script>
+  </head>
+  <body>
+    <div id="wrapper">
+      <div id="mainContent">
+        <div class="column tripleColumn">
+          <h1 id="title">Hi! Hello! Good Day!</h1>
+        </div>
+        <div id="intro" class="column tripleColumn">
+          <div class="shadow">
+            <img src="https://secure.gravatar.com/avatar/639d9144c935d74458cd033d4c6f0f28?s=300" alt="Alastair Smith"/>
+          </div>
+          <p>I'm Alastair, a software developer based in Cambridge, UK.  I work primarily in the Microsoft space
+          with C# and the .NET Framework, but fiddle around with many other technologies and languages such as
+          WiX, PowerShell, and PHP.</p>
+
+		  <p>I'm the founder of the <a href="http://www.camswcraft.org.uk/" title="Cambridge Software Craftsmanship Community website">
+		  Cambridge Software Craftsmanship Community (CSCC)</a>, a group set up to promote and encourage professionalism
+		  the software industry.  Currently we run two meet-ups per month: a round-table discussion on the first Tuesday,
+		  and a hands-on session on the third Tuesday.</p>
+
+          <p>I'm also a keen amateur bassoonist, playing regularly with the
+          <a href="http://www.cambridgegraduateorchestra.com/" title="Cambridge Graduate Orchestra">Cambridge
+		  Graduate Orchestra</a> and the <a href="http://www.huntsphil.org.uk/" title="Huntingdonshire Philharmonic">
+		  Huntingdonshire Philharmonic</a>. In 2009, I achieved the DipABRSM in Performance on the instrument.  I 'dep'
+		  for various ensembles in the Cambridge area including Cambridge Symphonic Winds, the City of Cambridge Symphony
+		  Orchestra, and the Uttlesforde orchestra. <a href="http://www.codebork.com/contact" title="Contact | CodeBork">
+		  Contact me</a> if you would like me to play.</p>
+        </div>
+
+		<div id="codebork" class="column tripleColumn">
+		  <h2>CodeBork.com</h2>
+		  <p>CodeBork is my main blog where I write on technical subjects, mostly programming.</p>
+		  <div id="codeborkBlog" class="blog">
+            <h3><a href="#">Desire Lines in software architecture: what can we learn from landscape architecture?</a></h3>
+            <div>
+              <p class="postInfo">Posted on 16 January 2015 at 09:01</p>
+              <div class="teaser"><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even"><p>Before Christmas I was talking with <a href="https://twitter.com/theagilepirate">Simon</a> about an architectural approach we'd taken on a recent project. The aim of the project is to replace an existing WinForms user interface with a shiny new HTML and JavaScript version. Part of this involves making HTTP requests back to the "engine" of the product, a .NET application, and of course our chosen data format is JSON. To protect the HTML UI from changes made in the Engine, we decided to keep a separation between the models we transferred over HTTP (what we termed Data Models), and the models we used in the application (or, "Application Models"). The approach that we took had similarities with the concept of Desire Lines from landscape architecture, as described in <a href="http://www.amazon.co.uk/Practices-Scaling-Lean-Agile-Development/dp/0321636406"><em>Practices for Scaling Lean and Agile Development</em> by Larman and Vodde</a>.
+                                                                                                                                                                                                         <!--break-->
+                                                                                                                                                                                                         A desire line (or desire path) is a path that evolves over time, as a result of people walking or cycling from where they are to where they want to be, and usually represents the shortest (or easiest) route between those points. These desire paths provide a key indication of the routes people take to reach a destination, and many desire paths become fully managed "official" paths, upgraded to gravel or tarmac. A good example from Cambridge is the green open space called Parker's Piece<a href="#footnote-asterisk"><sup>*</sup></a>. Bounded on all sides by roads, it has two main paths, running roughly North-South and East-West<a href="#footnote-dagger"><sup>&dagger;</sup></a>:</p>
+
+                <p><a href="http://codebork.com/content/parkers-piece-sketchmap"><img src="http://codebork.com/sites/default/files/Parkers%20Piece.png" alt="Parkers Piece" width="690" /></a></p>
+
+                <p>Even the briefest of glances at that deliberately rough sketch map provides a clear idea of where the points of interest lie outside of Parker's Piece. In the top corners, we have obstacles &mdash; to the left, the public toilets; to the right, the University Arms hotel &mdash; and in the bottom left corner, we have objects of desire: the gym and swimming pool, a skate park, and a pedestrian crossing. I find it interesting that not only do desire paths represent the shortest or easiest path to an object of desire, but that they also represent the shortest path around an obstacle.</p>
+
+                <p><strong>Ok, ok, but how does this apply to software architecture?</strong></p>
+
+                <p>Well, the overall concept of desire lines has similarities with both the "outside-in" development approach described by books such as <a href="http://www.growing-object-oriented-software.com/"><em>Growing Object-Oriented Software, Guided by Tests</em></a> and the Lean and Agile principles of a <a href="http://theleanstartup.com/principles">minimum viable product (MVP)</a> and incremental development. The MVP can be considered the diagonal paths in the sketch above, the basic routes from one side of the grass to the other; the desire lines represent the incremental development, added as and when they become needed &mdash; for example, I gather the skate park didn't exist in the 16th century when Parker's Piece was first established!</p>
+
+                <p>A more concrete example is in communication between disparate systems. Remember in the opening paragraph, I mentioned the HTML UI communicates with the product's engine via JSON? In this sort of scenario, you can start with a minimum viable data contract and add to it as more of the application is built. Or to put it another way, working from the outside in, you let the consumer define the data format and, as you build this consumer, so you build the data format (this applies to behaviour as much as data, of course, but that's another blog post.) Taking the ubiquitous to-do list app example, you might build up your data contract as follows:</p>
+
+                <p><a href="http://codebork.com/content/mvp-phases"><img src="http://codebork.com/sites/default/files/MVP%20phases.png" width="690" /></a></p>
+
+                <p>An alternative approach, which we took on this project for reasons of practicality, is to provide a very loose data contract and then refine it as you build. This roughly translates to throwing everything and the kitchen sink over the wire for every request, and then refactoring the data contracts as you build the client. We took this approach in our project because the HTTP endpoints were developed independently of the user interface up front, and that team didn't know at the time what the UI would need. They developed a proof-of-concept UI along the way which consumed this data, and the production-quality UI is refactoring those data contracts along the way. In honesty, I wouldn't recommend taking this approach unless your hands are tied, as it's analogous to refactoring a God Object. To stretch the desire lines metaphor to the point of breaking, it's a bit like covering the proposed green space with gravel and grass seed, and letting the grass grow through the gravel where people don't walk, then scooping up the gravel in those areas and properly turfing them. Basically, a massive faff, and one that is likely to produce less well-defined results than the true desire lines approach.</p>
+
+                <p>I've had a few musings around the MVP concept over the last few weeks, and this latest addition was sufficiently interesting to share. Certainly I will be keeping it in mind in the coming weeks and months as we start on new development work.</p>
+
+                <p><span id="footnote-asterisk" style="font-size: x-small"><sup>*</sup>Factoid: Parker's Piece is considered <a href="http://www.bbc.co.uk/cambridgeshire/content/articles/2006/06/09/cambridge_football_rules_parkers_piece_feature.shtml">the birthplace of the rules of Association Football</a>!</span><br />
+                  <span id="footnote-dagger" style="font-size: x-small"><sup>&dagger;</sup>The elaborate lamppost at the crossing in the middle is known as "the Reality Checkpoint"</span></p>
+              </div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">Coding: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/category/coding/architecture-software-architecture-minimum-viable-product-mvp" typeof="skos:Concept" property="rdfs:label skos:prefLabel">architecture; software architecture; minimum viable product; mvp</a></li></ul></div></div>
+              <p class="postInfo"><a href="http://codebork.com/2015/01/16/desire-lines-software-architecture-what-can-we-learn-landscape-architecture.html" alt="Desire Lines in software architecture: what can we learn from landscape architecture?" title="Desire Lines in software architecture: what can we learn from landscape architecture?">Read more&hellip;</a></p>
+            </div>
+            <h3><a href="#">Updates to Bob, v0.2 released!</a></h3>
+            <div>
+              <p class="postInfo">Posted on 12 April 2014 at 05:04</p>
+              <div class="teaser"><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><p>Recently <a href="http://codebork.com/2014/03/23/introducing-bob.html">I introduced a new library</a> to aid testing in C#, <a href="https://github.com/alastairs/bobthebuilder">Bob</a>. I've made a couple of updates to it recently, one small, and one a bit larger. The latest release tackles a few robustness issues and sees it move out of alpha phase and up to version 0.2!</p>
+
+                <h1>Support for Complex Types</h1>
+
+                <p>The first new feature is support for complex types with parameterless constructors. You can now say <code>A.BuilderFor&lt;Customer&gt;().WithAddress(new Address())</code>, for example. As it turned out, Bob already supported this as, of course, types with parameterless constructors are easily constructed by the reflection API. There are now tests around this use case, however, so you can be sure it will continue to work!</p>
+
+                <h1>Support for Named Arguments syntax</h1>
+
+                <p>The second new feature is a little larger: supporting a different syntax taking advantage of C# 4's support for named arguments. You can now say <code>A.BuilderFor&lt;Customer&gt;().With(customerId: 43)</code>, for example, and you can supply multiple properties to the same call, such as</p>
+
+                <p><pre>
+A.BuilderFor&lt;Customer&gt;()
+    .With(customerId: 43,
+          givenName: "John",
+          familyName: "Doe"
+    ).Build();
+</pre></p>
+
+                <p>This might be useful if you have a set of properties that always travel together (and so might help you identify where a new class could be introduced).</p>
+
+                <p>As before, you can skip the call to <code>Build()</code> if the compiler can work out that you're after an instance of the built type.</p>
+
+                <h1>Robustness</h1>
+
+                <p>I've done a bit of redesign which threw up some places where the library wouldn't work quite as intended (e.g., see what happens if you call a builder method that doesn't start with the word 'With'). I now have a design I'm happier with, and have ironed out these peculiarities of functionality, and now feel that it should be more solid than previously. As such, I'm very happy to announce that I've removed the "alpha" tag from the package version and have bumped it to v0.2!</p>
+
+                <h1>Get Bob v0.2</h1>
+
+                <p>All of these changes are available from NuGet in the 0.2 version of the package, just <code>install-package BobTheBuilder</code>!</p>
+
+                <p>Happy building!</p>
+              </div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">Coding: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/category/coding/bob" typeof="skos:Concept" property="rdfs:label skos:prefLabel">bob</a></li><li class="taxonomy-term-reference-1"><a href="/category/coding/bobthebuilder" typeof="skos:Concept" property="rdfs:label skos:prefLabel">bobthebuilder</a></li><li class="taxonomy-term-reference-2"><a href="/category/coding/test-data-builders" typeof="skos:Concept" property="rdfs:label skos:prefLabel">test data builders</a></li><li class="taxonomy-term-reference-3"><a href="/category/coding/goos" typeof="skos:Concept" property="rdfs:label skos:prefLabel">goos</a></li></ul></div></div>
+              <p class="postInfo"><a href="http://codebork.com/2014/04/12/updates-bob-v02-released.html" alt="Updates to Bob, v0.2 released!" title="Updates to Bob, v0.2 released!">Read more&hellip;</a></p>
+            </div>
+            <h3><a href="#">Introducing Bob</a></h3>
+            <div>
+              <p class="postInfo">Posted on 23 March 2014 at 12:03</p>
+              <div class="teaser"><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><h2>TL;DR</h2>
+
+                <p>Test Data Builders are awesome and you should use them to tidy up your test code (read about them in GOOS Chapter 22). I'm introducing a new library called <a href="http://github.com/alastairs/BobTheBuilder">Bob</a> which replaces the need to write your own hand-rolled Test Data Builders with a generic solution that preserves the fluent syntax suggested by GOOS.</p>
+
+                <h2>Test Data Builders</h2>
+
+                <p>One of the most influential books on software development practice in recent years is <em>Growing Object Oriented Software, Guided by Tests</em>, or GOOS for short. It describes an approach to application development based on Test-Driven Development, but demonstrates how to effectively use Mocks, Stubs and Fakes to drive your application's design from the outside and model it around the communications between collaborators, rather than stored state.</p>
+
+                <p>A key recommendation GOOS makes for keeping your test code clean is to use a technique called Test Data Builders (Chapter 22, p257). This approach leans on the Builder pattern from the Gang of Four (GoF) to abstract away the construction of objects on which your tests depend, but do not necessarily care about. For example, say you are developing an online shop, which models customers and orders. You might write your tests like this:</p>
+
+<pre><code>[Fact]
+           public void Placing_An_Order_Adds_The_Order_To_The_Customers_Account()
+           {
+           // Arrange
+           var customer = new Customer(1, // Id
+           "Joe", "Bloggs", // Name
+           "10 City Road", "Staines", "Middlesex", "AB1 2CD" // Address
+           );
+           var order = new Order(1, customer);
+
+           // Act, Assert: not interesting for this example
+           }
+</code></pre>
+
+                <p>After a while and a couple of tests, you realise you've got some duplicated code that you could factor out, so you introduce a couple of factory methods. Maybe you even include default parameter values to allow you to reuse the same factory method:</p>
+
+<pre><code>[Fact]
+           public void Placing_An_Order_Adds_The_Order_To_The_Customers_Account()
+           {
+           // Arrange
+           var customer = CreateCustomer();
+           var order = new Order(1, customer);
+
+           // ...
+           }
+
+           private Customer CreateCustomer(int id = 1,
+           string givenName = "Joe",
+           string familyName = "Bloggs",
+           string addressLine1 = "10 City Road",
+           string addressLine2 = "Staines",
+           string county = "Middlesex",
+           string postCode = "AB1 2CD")
+           {
+           return new Customer(id, givenName, familyName, addressLine1, AddressLine2, county, postCode);
+           }
+
+           private Order CreateOrder(Customer customer, int id = 1)
+           {
+           return new Order(id, customer);
+           }
+</code></pre>
+
+                <p>But time goes on, and you find this approach isn't really working for you either. Perhaps you have somehow ended up with three versions of <code>CreateCustomer()</code> that take different dependencies, or some abstraction is leaking all over your tests in spite of your best efforts. This is where the Test Data Builder pattern comes in.</p>
+
+                <p>The Test Data Builder pattern is really just an implementation of the Builder pattern from GoF. This is a creational pattern, like the more common Factory Method and Abstract Factory patterns, and while it is more complicated than either factory pattern, it provides more flexibility too. It achieves this by separating the construction of the object from the object's representation. As defined in GoF, it is a fairly complex pattern, but GOOS simplifies it somewhat.</p>
+
+                <p>We start by defining a Builder class for the type we need to construct, which defines a Build() method returning the type we need:</p>
+
+<pre><code>internal class CustomerBuilder
+           {
+           public Customer Build()
+           {
+           return new Customer(1, // Id
+           "Joe", "Bloggs", // Name
+           "10 City Road", "Staines", "Middlesex", "AB1 2CD" // Address
+           );
+           }
+           }
+</code></pre>
+
+                <p>So far, so uninteresting. Next we start adding methods to define how we want the built <code>Customer</code> to look:</p>
+
+<pre><code>internal class CustomerBuilder
+           {
+           private string givenName;
+           private string familyName;
+
+           public CustomerBuilder WithGivenName(string newGivenName)
+           {
+           givenName = newGivenName;
+           return this;
+           }
+
+           public CustomerBuilder WithFamilyName(string newFamilyName)
+           {
+           familyName = newFamilyName;
+           return this;
+           }
+
+           public Customer Build()
+           {
+           return new Customer(1, // Id
+           givenName, familyName
+           "10 City Road", "Staines", "Middlesex", "AB1 2CD" // Address
+           );
+
+           }
+           }
+</code></pre>
+
+                <p>There are two things to notice from the above code sample. First, we get to remove those pesky comments because the code now better reveals its intent: it is self-documenting, which is the dream.</p>
+
+                <p>The second thing to notice is the builder methods return the current instance of <code>CustomerBuilder</code>. This allows us to chain calls to the builder methods together to form a nice fluent interface:</p>
+
+<pre><code>[Fact]
+           public void Placing_An_Order_Adds_The_Order_To_The_Customers_Account()
+           {
+           // Arrange
+           var customer = new CustomerBuilder()
+           .WithGivenName("Joe")
+           .WithFamilyName("Bloggs")
+           .Build();
+           var order = new Order(1, customer);
+
+           // ...
+           }
+</code></pre>
+
+                <p>Much nicer! This can be combined with a Factory Method in your test fixture to create the <code>CustomerBuilder</code>, which can make the code fully fluent:</p>
+
+<pre><code>[Fact]
+           public void Placing_An_Order_Adds_The_Order_To_The_Customers_Account()
+           {
+           // Arrange
+           var customer = ACustomer()
+           .WithGivenName("Joe")
+           .WithFamilyName("Bloggs")
+           .Build();
+           // ...
+           }
+
+           private CustomerBuilder ACustomer()
+           {
+           return new CustomerBuilder();
+           }
+</code></pre>
+
+                <p>Furthermore, you can add methods to your Builder along the lines of <code>WithNoFamilyName()</code> to make explicit situations where that part of the object should not be set. For example an Address object will have optional information such as <code>AddressLine2</code>, or you may wish to test what happens when no post code is provided as part of the address.</p>
+
+                <p><a href="http://blog.ploeh.dk/">Mark Seemann</a> proposed a couple of extensions to the original GOOS Test Data Builder, which are quite nice. The first is to use the constructor of the Builder to define any default values that must be provided to the object being built. The second is to define an implicit cast from the Builder to the built type, to eliminate the noise of explicitly calling <code>Build()</code> all over the place:</p>
+
+<pre><code>internal class CustomerBuilder
+           {
+           // ...
+
+           public static implicit operator Customer(CustomerBuilder builder)
+           {
+           return builder.Build();
+           }
+           }
+</code></pre>
+
+                <h2>Introducing Bob</h2>
+
+                <p>I've been writing Test Data Builders for a good number of months now, and as useful as the pattern is I find myself feeling frustrated at the amount of boilerplate code it demands: the builder methods in particular are quite annoying as they are so similar. I started off by trying to reduce the amount of typing I had to do by using <a href="http://www.jetbrains.com/resharper">ReSharper</a> templates to stub out the different facets of the pattern such as the builder class, the builder methods, etc., but then I moved jobs and lost them all. I haven't yet got around to reproducing the templates in my new dev environment.</p>
+
+                <p>Then a couple of days ago I had an idea. <a href="http://github.com/markrendle/Simple.Data">Simple.Data</a> uses the Dynamic Language Runtime and the dynamic dispatch features of C# to offer methods  that represent columns in your database tables (e.g. <code>pets.FindById(256);</code>, <code>pets.FindByType("Dog");</code>, etc.). Perhaps the Test Data Builder pattern implementation can be generalised using the techniques?</p>
+
+                <p>I spent today spiking a new library to do this, <a href="http://github.com/alastairs/BobTheBuilder">Bob</a>. You use it like this:</p>
+
+<pre><code>[Fact]
+           public void Placing_An_Order_Adds_The_Order_To_The_Customers_Account()
+           {
+           // Arrange
+           var customer = A.BuilderFor&lt;Customer&gt;()
+           .WithGivenName("Joe")
+           .WithFamilyName("Bloggs")
+           .Build();
+           // ...
+           }
+</code></pre>
+
+                <p>It also implements Mark's second extension to the pattern, whereby you can implicitly cast from the Builder returned by <code>BuilderFor&lt;T&gt;()</code> to <code>T</code> and have it invoke the <code>Build()</code> method to complete the conversion.</p>
+
+                <p>It is, admittedly pretty limited in functionality at the moment because it's a proof of concept. It will only build instances of types that have a default (i.e. parameterless) constructor and that provide public setters on properties for the things that are to be set. I will build out the functionality as I need it, and <a href="https://github.com/alastairs/BobTheBuilder/#task-list">I have published a Task list</a> of immediately-forthcoming functionality.</p>
+
+                <p>Check it out and let me know what you think!</p>
+              </div></div></div></div>
+              <p class="postInfo"><a href="http://codebork.com/2014/03/23/introducing-bob.html" alt="Introducing Bob" title="Introducing Bob">Read more&hellip;</a></p>
+            </div>
+            <h3><a href="#">Software Craftsmanship, and Professionalism in Software</a></h3>
+            <div>
+              <p class="postInfo">Posted on 28 September 2013 at 03:09</p>
+              <div class="teaser"><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><p>Another thing to come out of my reflections on Software Craftsmanship at SoCraTes UK this weekend was a clearer view on what professionalism means to me for software craftsmen. I believe there are three pillars of professionalism that need to be considered:</p>
+
+                <ul>
+                  <li>A mindset of taking a methodical, deliberate, and considered approach to your work;</li>
+                  <li>Leaning on your tools, but not being dependent upon them; and</li>
+                  <li>Taking personal responsibility for your decisions and actions</li>
+                </ul>
+
+                <!--break-->
+
+                <h2>The First Pillar: Mindset</h2>
+
+                <p>The first pillar, that of the approach one takes to their work, is what allows us to deliver quality software. It is also, perhaps, one of the things we would like to be judged on when sharing our work with others. It is about being careful (not, in this context, in the "cautious" sense of the word) in our implementations to ensure that what we deliver meets our standards. Let's delve into each of the words I used a bit further.</p>
+
+                <h3>Methodical</h3>
+
+                <p>A methodical approach is one that is systematic and orderly. For example, the Test-Driven Development process takes the form of three steps that are repeated in a loop: red, green, refactor; red, green, refactor; red, green, refactor; etc. This process is both systematic - it encompasses a system that is defined as "implement software incrementally, by writing your tests first, making the tests pass, and making incremental improvements to the tests and implementation" - and ordered, in that the steps have to be completed in the order listed: you can't refactor code when you have failing tests, and if you end up with failing tests after making another test pass (or during a refactoring), you have broken something.</p>
+
+                <p>It goes further than this, however: for example, seeing the test fail <em>for the right reason</em>. That is, if your test passes because your code already covers the case you're now testing, you go back and change your implementation code to make that new test fail. If you see the test fail because of a compilation error, or because of an exception thrown, you go back and make sure the assertion itself fails when the behaviour it is testing fails.</p>
+
+                <h3>Deliberate</h3>
+
+                <p>A deliberate approach is one where each of the steps are there for a reason, they have a specific intent. Taking again the Test-Driven Development process of red-green-refactor as our example, we can see that each of the steps in the process have a purpose, and in the order described. By writing our test first, we commit to a small unit of behaviour that we specify with the test. In the green phase, we implement the behaviour specified. Finally, in the refactor stage, we incrementally improve the design of our code to remove duplication and other smells.</p>
+
+                <p>Again, this also ties back to seeing the test fail for the right reason. Each of the three steps are there for a purpose, so we don't skip over any of them even when it looks like we've met the high-level goal of making bar go green or red; we dig into it further to ensure that we've achieved that goal for the right reason, that the purpose of the current step has been satisfied.</p>
+
+                <h3>Considered</h3>
+
+                <p>A considered approach is one that you have thought about, one that you can defend for your own reasons when challenged on it. You have made the decisions you have, and taken the approach that you have, as the result of thinking about what it is you are doing; not simply following orders, or naively following a process, or being a passive participant in your team's activities.</p>
+
+                <p>When I first picked up TDD, I did so without contemplating in much detail the approach it defines. As a result, when I came to introduce the concept to my team at work, I had some tough questions to answer from them about the value of the approach and the detail of the process that I wasn't able to satisfactorily address in some cases.</p>
+
+                <h3>The Mindset: Mindfulness</h3>
+
+                <p>Mindfulness is perhaps most easily understood as the very opposite of mindlessness, a word many more people are familiar with: we can all picture a person working as an automaton, completing a task they've done hundreds or thousands of times before, doing it without thinking, without engaging with the task at all. We've all had the experience of making a journey somewhere, perhaps on foot, by bike, or in a car, and arriving at our destination without much recollection of the journey there. Mindfulness is about engaging with the task you're undertaking, being an active participant.</p>
+
+                <p>Taking a methodical, deliberate and considered approach to your work instills a mindset of mindfulness in your work, which I believe is important to mastering your craft. Being mindful of your work provides you with greater opportunities for learning from your mistakes, the situations you encounter at work, and the context around you. It means challenging your practices and principles, and accepting that they will be challenged by others. It means thinking about what you are doing and justifying your approach to yourself.</p>
+
+                <p>You might be reading this and thinking that what I'm suggesting sounds like perpetual self-doubt; this is not the case. Self-doubt comes at this process from a negative position, where you're questioning your motives and decisions for the simple reason that you made them. Mindfulness comes from a much more positive position, that of curiosity: you question your approach with the intention of learning from the decision, you're curious as to whether there is a better approach that can be taken, a more efficient practice that can be learned, etc.</p>
+
+                <h2>The Second Pillar: Tools</h2>
+
+                <p>Every craftsman has his or her tools: the carpenter has saws, hammers, lathes and more; the surgeon has a scalpel, an endoscope, and sutures; the software developer has their editor or IDE, refactoring tools, test runners, version control system, and more. Tools are an important part of any craftsman's job, and knowing your tools well can be the difference between doing a good job and bad job, producing quality product over poor product, creating more product over less product, etc.</p>
+
+                <p>A craftsman should not be dependent upon their tools, however. Being prepared to put a tool to one side to try a new one out is just part of this: how will you know if something better is available if you never try it? For example, a large number of C# developers have a copy of ReSharper at work, and many have their own copy at home as well. This tool came about in the first place because of poor support within Visual Studio for basic refactoring operations like rename and extract method. However, there is a manual approach, described by Martin Fowler in his <a href="http://www.amazon.co.uk/Refactoring-Improving-Design-Existing-Technology/dp/0201485672/">original text on refactoring</a>: add-update-remove. It is a methodical, deliberate, and considered process that allows you to complete a refactoring manually without seeing a compilation error; for example, if adding a parameter to a method:</p>
+
+                <ol>
+                  <li>Add a new overload of the method that includes the new parameter, and make it call the existing overload.</li>
+                  <li>Update all usages of the existing overload of the method to point to the new one, supplying the new argument as appropriate to that context.</li>
+                  <li>Remove the old overload that is now unused everywhere, migrating the implementation to the new overload in the process.</li>
+                  <li>Make the changes needed to the implementation to use the new parameter.</li>
+                </ol>
+
+                <p>If you're using a modern version control system like Git, then you can commit after each of these stages as well, so you get a set of handy staging posts you can roll back to if necessary.</p>
+
+                <p>Here are some of the tools I consider essential for any software craftsman, no matter what language they are working in:</p>
+
+                <ul>
+                  <li><strong>The best-available editor for your language</strong> (defined on your own terms). Perhaps it's Visual Studio for C# developers, IntelliJ IDEA for Java Developers, vim/emacs for Ruby/Python/JavaScript developers; perhaps you prefer SharpDevelop, Eclipse, or PyCharm.</li>
+                  <li><strong>A plain-text editor.</strong> Often we need to make a small change to a file, or write a commit message, or edit a supporting file. Firing up a complete IDE is overkill for this kind of scenario, so it is worth keeping around a plain-text editor for these situations, and one a little less basic than Notepad at that. I've tried a few over the last 10 or so years, and have recently come to settle on Sublime Text 2, and vim.</li>
+                  <li><strong>A scripting environment.</strong> Linux users have had Bash and other shells available since the beginning of time (1 Jan 1970, as we all know). Windows now has PowerShell, and if you're a developer working in Windows regularly, you owe it to yourself to learn PowerShell well. Scripting environments put the power of automation at your finger-tips, which can be a huge time-saver. </li>
+                  <li><strong>An automated refactoring tool</strong> (if available). Some IDEs have these built in, particularly JetBrains' offerings. Visual Studio has a number of "productivity extensions" including ReSharper, CodeRush and JustCode that bring the full weight of this functionality to bear over VS' limited offering. </li>
+                  <li><strong>A Distributed Version Control System</strong>, such as Git or Mercurial. Having the ability to commit and roll-back changes locally before going anywhere near a central repository is an incredible advantage: with a bit of discipline in committing, you can mess up your working copy as much as you like and always have a recent checkpoint to revert to. Git is my weapon of choice in this arena.</li>
+                  <li><strong>An automated test runner, ideally with a continuous mode.</strong> I started using <a href="http://www.ncrunch.net/">NCrunch</a>, a continuous test runner for Visual Studio, about 18 months ago. On projects with proper unit tests, it provides a fantastic productivity boost just having the tests running all the time in the background on each change. JavaScript developers have karma (amongst other options, I'm sure), and there are similar things available for other languages too. At work, I use ReSharper's test runner because it integrates very nicely with my IDE and our tests at work don't play nicely with NCrunch. </li>
+                </ul>
+
+                <p>Each of these tools are integral to my development process, and serve a very specific function, in exactly the same way that a lathe, a saw and sandpaper are to a carpenter's wood-working process.</p>
+
+                <h2>The Third Pillar: Personal Responsibility</h2>
+
+                <p>Erik Talboom's Lightning Talk on Personal Responsibility at SoCraTes UK evidently struck a chord with everyone in the room: it was a recurring theme in sessions and conversations throughout the weekend.</p>
+
+                <p>Erik explained well Christopher Avery's <a href="http://www.christopheravery.com/responsibility-process">Responsibility Process</a> in terms of finding and fixing a bug:</p>
+
+                <ul>
+                  <li><strong>Denial.</strong> First you cannot believe there is a bug. "There's no way that could happen!", you tell yourself.</li>
+                  <li><strong>Blame.</strong> Next you start looking around for someone to blame for the bug. "This is Joey's code, it's his fault!", you tell yourself.</li>
+                  <li><strong>Justification.</strong> Third, you look for excuses for the bug being there. "Well, if Joey hadn't used null values in his code, there would be no bug!", you tell yourself.</li>
+                  <li><strong>Shame.</strong> Next, you start to lay blame yourself. "I'm such an idiot. I saw Joey working on this just last week and I didn't say anything.", you tell yourself.</li>
+                  <li><strong>Obligation.</strong> Now the context and environment are at fault. "There's no way we could have done anything different, we're under such pressure to deliver on time that quality goes out the window.", you tell yourself.</li>
+                  <li><strong>Responsibility.</strong> You realise there's something you can do about it. "I'll have a chat with Joey to explain why nulls should be avoided, and start trialling code reviews as part of our development process."</li>
+                </ul>
+
+                <p>The alternative to responsibility, of course, is abdicating it: quitting the situation to avoid the pain associated with shame and obligation.</p>
+
+                <p>A key part of taking personal responsibility is mindfulness: being aware of when you are in the mental states of denial, blame, justification, etc. This awareness can help you move through the remaining stages more quickly (or skip them entirely) to reach a productive conclusion earlier.</p>
+
+                <h2>Conclusion</h2>
+
+                <p>Mindfulness and Personal Responsibility are the two key "psychological" components of professionalism to me; the second pillar, Tools, provides a way of expressing those through our practices. Any amateur can use a professional's tools, but it is the approach we take to our work that indicates professionalism and denotes craftsmanship.</p>
+              </div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">Coding: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/category/coding/craftsmanship" typeof="skos:Concept" property="rdfs:label skos:prefLabel">Craftsmanship</a></li><li class="taxonomy-term-reference-1"><a href="/category/coding/software-craftsmanship" typeof="skos:Concept" property="rdfs:label skos:prefLabel">Software Craftsmanship</a></li><li class="taxonomy-term-reference-2"><a href="/category/coding/tools" typeof="skos:Concept" property="rdfs:label skos:prefLabel">Tools</a></li><li class="taxonomy-term-reference-3"><a href="/category/coding/practices" typeof="skos:Concept" property="rdfs:label skos:prefLabel">Practices</a></li><li class="taxonomy-term-reference-4"><a href="/category/coding/professionalism" typeof="skos:Concept" property="rdfs:label skos:prefLabel">Professionalism</a></li><li class="taxonomy-term-reference-5"><a href="/category/coding/mindfulness" typeof="skos:Concept" property="rdfs:label skos:prefLabel">Mindfulness</a></li><li class="taxonomy-term-reference-6"><a href="/category/coding/personal-responsibility" typeof="skos:Concept" property="rdfs:label skos:prefLabel">Personal Responsibility</a></li></ul></div></div>
+              <p class="postInfo"><a href="http://codebork.com/2013/09/28/software-craftsmanship-and-professionalism-software.html" alt="Software Craftsmanship, and Professionalism in Software" title="Software Craftsmanship, and Professionalism in Software">Read more&hellip;</a></p>
+            </div>
+            <h3><a href="#">A Plurality of Ideas: Contrasting Perspectives of Software Craftsmanship</a></h3>
+            <div>
+              <p class="postInfo">Posted on 27 September 2013 at 15:09</p>
+              <div class="teaser"><div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><p>Attending SoCraTes UK over the weekend got me thinking about Software Craftsmanship in general, and the different perspectives within the movement was one of those things, particularly the differences, as I perceive them, between the North American<a name="footnote1-ref" href="#footnote1">*</a> and the European schools.</p>
+
+                <!--break-->
+
+                <p>Software Craftsmanship started off in the US about 5-6 years ago, as something of a reaction against the sea change in the agile movement away from technical practices. I first came across it myself in 2010, and it looked right up my street, so I promptly booked myself onto that year's Software Craftsmanship UK conference at Bletchley Park. I liked the technical focus of the conference, particularly the hands-on nature of it, and I've been every year since (hopefully see you there in October!). Reading more about the movement, I saw a great deal of focus on practices, particularly those inherited from XP like pair programming and Test-Driven Development.</p>
+
+                <p>A couple of years later, I started attending the London Software Craftsmanship Community meet-ups. Initially, I went along to their workshops to learn something new about the act of developing software, a new technique to try out, practice my TDD, etc. A few months later, I started attending their Round Table discussions as well, and found the opportunity to talk to other craftsmen invaluable. Discussions around Domain-Driven Design, corporate cultures, motivation, and hiring good developers, were just some of the highlights of the conversations there.</p>
+
+                <p>Clearly on display at SoCraTes UK this weekend was a plurality of ideas, and people willing to reflect on their craft and develop their understanding through the challenging of their principles, practices, ideas, and beliefs. I saw this across the group of 70 people attending from at least 5 countries in Europe. It could easily have been an exercise in navel-gazing, but what we had instead were productive discussions that helped us form a clearer collective picture of the concept of Software Craftsmanship.</p>
+
+                <p>Something we discussed in the fish bowl at the start of the conference was whether Software Craftsmanship was becoming a religion, particularly in the way we share our values with other people. @sleepyfox made the point that we shouldn't be trying to bring our values to other people, because it's too much like a religious war, or a crusade. That way lies dogmatism, the antithesis of what lies at the heart of Software Craftsmanship. I fear there are some elements of Software Craftsmanship that are becoming religious and dogmatic, and that as a result the movement as a whole is starting to lose some of its pragmatism.</p>
+
+                <p>What I have thought for a long time now is that Software Craftsmanship is really about more than just the technical practices. The <a href="http://manifesto.softwarecraftsmanship.org">manifesto</a> talks about "a community of professionals" and "productive partnerships", for example, as well as "well-crafted software". The <a href="http://manifesto.softwarecraftsmanship.org/#/en/reading">further reading page</a> on the Software Craftsmanship website includes links to blog posts, including one asking "Is Craftsmanship all about code?"</p>
+
+                <p>Unfortunately, it seems to me that the North American school of Software Craftsmanship <em>is</em> all about code. Corey Haines brought the world the Code Retreat, and JB Rainsberger the Legacy Code Retreat. Uncle Bob travels the world talking about Clean Code, TDD, the SOLID principles, and more. I'm enormously grateful to these people for providing such important and valuable formats for learning, and for sharing their knowledge with the world to better the technical state of the industry. When I look at the North American Software Craftsmanship movement, however, it feels to me like there's something missing.</p>
+
+                <p>Practices come and go, and those that tie themselves to their practices risk irrelevance. I firmly believe that Craftsmanship practices (or XP practices), such as pair programming and Test-Driven Development, have inherent value to the extent that <em>everyone should learn them</em>. Learning them is different from using them all the time, however: there situations where TDD is a difficult practice to apply, such as when working with a large body of legacy code. While you can use TDD in some cases in this context (e.g. when adding new classes and functionality), in the main you have to adopt a test-last approach for the simple reason that <strong>the code has already been written, the design has already been decided</strong>. Other techniques, such as the Golden Master and incremental refactoring, will keep you more productive than TDD in this context.</p>
+
+                <p>The North American school's focus on technical practices opens us up to criticism along the lines that we have seen: "you're TDD Nazis", "you're too focussed on code", and "you're elitist". This last one stings the most for me: yes, we are actively trying to improve our craft, and yes we want to improve the industry, but we want to do that in as an inclusive way as possible. It's not a case of converting people to the Software Craftsmanship religion, it's a case of inspiring people of all abilities to seek to better themselves through our ethos of mentoring and peer learning.</p>
+
+                <p>What I see in the European school of Software Craftsmanship is a superset of the North American school: not just technical practices, but discussion, collaboration, learning and mentoring. It feels more fully-formed to me as a result, more holistic, more inclusive and welcoming. Perhaps it's a difference between European and North American cultures being expressed in the equivalent parts of our community, or maybe it's that the European school is an evolution of the North American school; I don't know. What I do know is that, while I see value in the technical focus of the North American school, the European school is the idea of Software Craftsmanship I identify with the most, and the one I will continue to promote.</p>
+
+                <hr />
+
+                <p><a name="footnote1">*</a> It might be unfair to generalise the North American movement as such. It's entirely possible it would be more accurate for my comments on the "North American school" to instead be addressed to the "Chicago school". I would be interested in hearing from someone with more knowledge of the movement that side of the Atlantic. <a href="#footnote1-ref">Return to article</a></p>
+              </div></div></div><div class="field field-name-taxonomy-vocabulary-1 field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">Coding: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="/category/coding/software-craftsmanship" typeof="skos:Concept" property="rdfs:label skos:prefLabel">Software Craftsmanship</a></li></ul></div></div>
+              <p class="postInfo"><a href="http://codebork.com/2013/09/27/plurality-ideas-contrasting-perspectives-software-craftsmanship.html" alt="A Plurality of Ideas: Contrasting Perspectives of Software Craftsmanship" title="A Plurality of Ideas: Contrasting Perspectives of Software Craftsmanship">Read more&hellip;</a></p>
+            </div>
+          </div>
+		  </div>
+		</div>
+		<!--<div id="keyProjects" class="column">
+		  <h2>Visual Studio Build Progress Bar</h2>
+		  <div>A simple add-in to Visual Studio (2008-2012) to display the current build progress
+		  in the Windows 7 and Windows 8 task bars.</div>
+		</div>-->
+        <div id="github" class="column">
+          <h2>GitHub</h2>
+          <p class="summary">I use <a href="http://www.github.com/" title="GitHub">GitHub</a> extensively to manage
+          my personal projects.  Here's a list of my public-accessible repositories; if you are a collaborator on
+          one of my private repositories and are logged in to GitHub, you'll be able to see those too.</p>
+          <div id="github-badge"></div>
+          <script type="text/javascript" charset="utf-8">
+            GITHUB_USERNAME="alastairs";
+          </script>
+          <script src="http://drnic.github.com/github-badges/dist/github-badge-launcher.js" type="text/javascript"></script>
+        </div>
+
+        <div id="photography" class="column doubleColumn">
+          <h2>Photography</h2>
+          <p class="summary">I'm an amateur photographer.  I like working with natural light, particularly outdooor
+          and landscape scenes.  I shoot with a Nikon D90 digital SLR camera and either a fast 50mm prime lens or
+          a slower 18-105mm zoom lens.</p>
+          <p class="summary">My photographs are hosted on
+          <a href="http://picasaweb.google.com/alastairsmith1">Google's Picasa service</a>.</p>
+          <embed type="application/x-shockwave-flash" src="http://picasaweb.google.com/s/c/bin/slideshow.swf" width="600" height="400" flashvars="host=picasaweb.google.com&hl=en_GB&feat=flashalbum&RGB=0x000000&feed=http%3A%2F%2Fpicasaweb.google.com%2Fdata%2Ffeed%2Fapi%2Fuser%2Falastairsmith1%3Falt%3Drss%26kind%3Dphoto%26access%3Dpublic%26psc%3DF%26q%26uname%3Dalastairsmith1" pluginspage="http://www.macromedia.com/go/getflashplayer"></embed>
+        </div><!-- #photography -->
+      </div><!-- #mainContent -->
+    </div><!-- #wrapper -->
+  </body>
+</html>
