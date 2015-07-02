@@ -64,3 +64,8 @@ a {
     margin: -6px 6px 6px -6px;
     padding: 4px;
 }
+
+#codeborkBlog h1 {
+    font-size: 1.2em;
+    padding-bottom: 0.6em;
+}
